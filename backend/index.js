@@ -30,16 +30,48 @@ app.get('/', (req, res) => {
 });
 
 app.post('/search', (req, res) => {
-    const id = req.body.id;   
-    // 웹 크롤링 코드
-    // getHTML(id)
-    // .then((html) => {
-    //     const $ = cheerio.load(html.data);
-    //     let parentTag = $("div.level-info2__expedition").find("span").text();
-    //     return parentTag;
-    //   })
-    //   .then((data) => res.send(data));
-    res.send('Post Success, your id is '+ id);
+    const id = encodeURI(req.body.id); // 한글도 인코딩   
+    let dataArr = [];
+    getHTML(id)
+        .then((html) => {
+            const $ = cheerio.load(html.data);
+            let resultArr = {};
+
+            const proflieInfo = $("div.profile-character-info > span"); // 프로필 영역 정보
+            let profileInfoArr = [];
+            proflieInfo.each((i, elem) => {
+                const text = $(elem).text();                
+                profileInfoArr.push(text);
+            });
+            resultArr.profile = profileInfoArr;
+
+            let parentTag = $("div.profile-ability-basic > ul > li");
+            // 크롤링할 태그 찾기
+
+
+
+
+
+
+// 뚱이다10세야
+
+
+            // parentTag.each(function (i, elem) {
+            //     let itemObj = {
+            //     text: $(this).find("span:first-child").text(),
+            //     num: $(this).find("span:last-child").text(),
+            //     };
+            //     resultArr.push(itemObj);
+            // });
+
+            // resultArr.forEach((elem) => {
+            //     console.log(`현재 ${elem._text}의 현황 : ${elem._num}`);
+            // });
+            return resultArr;
+            
+        })
+        .then((data) => res.send(data));
+    
 });
 
 app.listen(PORT, () => console.log(`listening on the port ${PORT}`));
