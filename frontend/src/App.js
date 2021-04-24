@@ -1,17 +1,18 @@
-import React from 'react';
-import { UserProvider } from 'contexts/UserContext';
+import React, { useContext } from 'react';
+import { UserContext } from 'contexts/UserContext';
 import Form from 'components/Form';
 import Info from 'components/Info';
 
 
-const App = () => {
+const App = () => {  
+  const { loading } = useContext(UserContext);
   return (
-      <UserProvider>
+      
         <div className="app">
           <Form />
-          <Info />
+          {loading && <Info />}
         </div>
-      </UserProvider>
+     
   );
 };
 

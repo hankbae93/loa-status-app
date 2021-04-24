@@ -46,11 +46,20 @@ app.post('/search', (req, res) => {
             });
             userInfo.profile = profileInfoArr;
 
+            // 레벨 정보
+            let levelInfo = $("div.level-info2 div.level-info2__expedition > span:last-child").text();
+            userInfo.level = levelInfo;
+            
+            // 장착 아이템 정보
+            let itemInfo = $("div.profile-equipment__slot > div > img");
+            let itemArr = [];
+            itemInfo.each((i, item) => {
+                const src = $(item).attr('src');                
+                itemArr.push(src);
+            });
+            userInfo.item = itemArr;
 
-            let parentTag = $("div.profile-ability-basic > ul > li");
-            
-            return userInfo;
-            
+            return userInfo;            
         })
         .then((data) => res.send(data));    
 });
