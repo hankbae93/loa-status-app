@@ -3,7 +3,7 @@ import React from 'react';
 const Info = ({ data }) => {    
     return (
         <div>
-            {data.profile && data.profile.map((item,i) => <p key={i}>{item}</p>)}
+            {/* {data.profile && data.profile.map((item,i) => <p key={i}>{item}</p>)} */}
         </div>
     );
 };

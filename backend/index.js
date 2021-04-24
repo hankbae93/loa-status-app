@@ -35,43 +35,24 @@ app.post('/search', (req, res) => {
     getHTML(id)
         .then((html) => {
             const $ = cheerio.load(html.data);
-            let resultArr = {};
+            let userInfo = {};
 
-            const proflieInfo = $("div.profile-character-info > span"); // 프로필 영역 정보
+            // 프로필 영역 정보
+            const proflieInfo = $("div.profile-character-info > span"); 
             let profileInfoArr = [];
             proflieInfo.each((i, elem) => {
                 const text = $(elem).text();                
                 profileInfoArr.push(text);
             });
-            resultArr.profile = profileInfoArr;
+            userInfo.profile = profileInfoArr;
+
 
             let parentTag = $("div.profile-ability-basic > ul > li");
-            // 크롤링할 태그 찾기
-
-
-
-
-
-
-// 뚱이다10세야
-
-
-            // parentTag.each(function (i, elem) {
-            //     let itemObj = {
-            //     text: $(this).find("span:first-child").text(),
-            //     num: $(this).find("span:last-child").text(),
-            //     };
-            //     resultArr.push(itemObj);
-            // });
-
-            // resultArr.forEach((elem) => {
-            //     console.log(`현재 ${elem._text}의 현황 : ${elem._num}`);
-            // });
-            return resultArr;
+            
+            return userInfo;
             
         })
-        .then((data) => res.send(data));
-    
+        .then((data) => res.send(data));    
 });
 
 app.listen(PORT, () => console.log(`listening on the port ${PORT}`));
