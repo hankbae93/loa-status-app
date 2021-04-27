@@ -14,9 +14,9 @@ const InfoContainer = styled.div`
 const Info = () => {    
     return (
         <InfoContainer>
-            <Profile />
+            {/* <Profile />
             <Level />
-            <Items />
+            <Items /> */}
         </InfoContainer>
     );
 };
