@@ -13,11 +13,12 @@ const Profile = () => {
     const { 
         userInfo : { profile }       
     } = useContext(UserContext);
+    
    return (
        <Container>
-           {profile.map((item, i) => {
-               return <p key={i}>{item}</p>
-           })}
+           <div className="profile name">{profile.name}</div>
+           <div className="profile server">{profile.server}</div>
+           <div className="profile">{}</div>
        </Container>
    );
 };

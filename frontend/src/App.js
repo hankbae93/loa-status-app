@@ -1,15 +1,16 @@
 import React, { useContext } from 'react';
 import { UserContext } from 'contexts/UserContext';
+import Container from 'components/Container';
 import Form from 'components/Form';
 import Info from 'components/Info';
 
 const App = () => {  
   const { loading } = useContext(UserContext);
   return (      
-        <div className="app">
+        <Container>
           <Form />
           {loading && <Info />}
-        </div>     
+        </Container>     
   );
 };
 

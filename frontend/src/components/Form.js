@@ -1,6 +1,53 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from 'contexts/UserContext';
 import axios from 'axios';
+import styled from 'styled-components';
+import { FaSearch } from "react-icons/fa";
+
+const FormBox = styled.form`
+    position:relative;
+    margin: 0 auto;
+    padding: 15px 0;
+    width: 300px;
+    font-size:16px;        
+`;
+
+const InputSearch = styled.input`
+    width:100%;
+    padding:10px 30px 10px 10px;
+    color:#fff;
+    font-size:16px;
+    background:none;
+    outline: none;
+    border-radius: 15px;
+    border: 3px solid #626774;
+    box-sizing:border-box;
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+	 transition: background-color 5000s ease-in-out 0s;
+	 -webkit-transition: none;
+     -webkit-box-shadow: none;
+     -webkit-text-fill-color: none;
+   }
+`;
+
+const Button = styled.button`
+    position: absolute;
+    top:50%;
+    right: 10px;    
+    padding: 3px;    
+    width: 30px;
+    height: 30px;
+    color:#fff;
+    font-size:16px;
+    background:none;
+    transform: translateY(-50%);
+    cursor: pointer;
+    border: none;
+    outline: none;
+`;
 
 const Form = () => {
     const [value, setValue] = useState('');    
@@ -28,11 +75,18 @@ const Form = () => {
     };
 
     return (
-        <form onSubmit={onSubmit}>
-            <input value={value} onChange={onChange} name="id" type="text"/>
-            <input type="submit" value="검색"/>
-        </form>
+        <FormBox onSubmit={onSubmit}>
+            <InputSearch 
+            name="id" 
+            type="text" 
+            value={value} 
+            onChange={onChange}
+            maxLength="20" 
+            placeholder="닉네임을 적어주세요"/>
+            <Button type="submit"><FaSearch/></Button>
+        </FormBox>
     );
 };
 
 export default Form;
+    
