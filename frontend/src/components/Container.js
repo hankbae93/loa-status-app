@@ -9,6 +9,9 @@ const GlobalStyle = createGlobalStyle`
         color: #fff;
         font-family: 'Noto Sans KR', sans-serif;
 	}
+    ul {
+        list-style: none;
+    }
 `;
 
 const BOX = styled.div`

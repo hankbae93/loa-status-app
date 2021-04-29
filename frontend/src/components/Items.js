@@ -13,7 +13,7 @@ const GRADE_BACKGROUND_STYLE = [
 const Slot = ({ itemSrc, grade}) => {    
     return (
         <div className="items-slot">
-            <img src={itemSrc} style={{background: GRADE_BACKGROUND_STYLE[grade - 1]}} alt />
+            <img src={itemSrc} style={{background: GRADE_BACKGROUND_STYLE[grade - 1]}} alt="" />
         </div>
     );
 };
@@ -31,14 +31,13 @@ const Items = () => {
             <div className="items-equip">
                 <ul className="equip-left">
                     {equip.map((item, i) => {
-                        if(i > 5) return;                        
-                        return <li><Slot itemSrc={item[1]} grade={item[0]}/></li>
+                        if(i > 5) return null;                        
+                        return <li><Slot key={i+item[1]} itemSrc={item[1]} grade={item[0]}/></li>
                     })}
                 </ul>
                 <ul className="equip-right">
                     {equip.map((item, i) => {
-                        if(i < 6) return;
-                        console.log(item[0])
+                        if(i < 6) return null;                      
                         return <li><Slot itemSrc={item[1]} grade={item[0]}/></li>
                     })}
                 </ul>

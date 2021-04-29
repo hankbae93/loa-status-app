@@ -1,6 +1,7 @@
 import React from 'react';
 import Profile from 'components/Profile';
 import Items from 'components/Items';
+import Stats from 'components/Stats';
 import styled from 'styled-components';
 
 const InfoContainer = styled.div`
@@ -9,11 +10,20 @@ const InfoContainer = styled.div`
     color: #fff;
 `;
 
+const InfoBottom = styled.div`
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+`;
+
 const Info = () => {    
     return (
         <InfoContainer>
-            <Profile />      
-            <Items />
+            <Profile />   
+            <InfoBottom>
+                <Items />
+                <Stats />
+            </InfoBottom>   
         </InfoContainer>
     );
 };
