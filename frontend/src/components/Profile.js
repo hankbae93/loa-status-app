@@ -3,10 +3,10 @@ import { UserContext } from 'contexts/UserContext';
 import styled from 'styled-components';
 
 const Container = styled.div`
-    display: flex;
-    justify-contents: center;
-    align-items: center;
-    width: 500px;
+    display: flex;        
+    padding: 5px 10px;
+    width: 100%;        
+    box-sizing: border-box;
 `;
 
 const Profile = () => {
@@ -15,10 +15,16 @@ const Profile = () => {
     } = useContext(UserContext);
     
    return (
-       <Container>
-           <div className="profile name">{profile.name}</div>
-           <div className="profile server">{profile.server}</div>
-           <div className="profile">{}</div>
+       <Container style={{ alignItems: 'center' }}>
+           <img             
+            src={profile.role.symbolSrc} 
+            alt={profile.role.name} />
+           <div 
+            style={{fontSize: '24px', marginLeft: '15px'}}>
+            <small>{profile.level.lv} </small>          
+            <strong>{profile.name}</strong>            
+            <span style={{color: '#b178ff', fontSize: '14px', paddingLeft: '3px'}}>{profile.server}</span>
+           </div>
        </Container>
    );
 };

@@ -6,8 +6,7 @@ import { FaSearch } from "react-icons/fa";
 
 const FormBox = styled.form`
     position:relative;
-    margin: 0 auto;
-    padding: 15px 0;
+    margin: 0 auto;    
     width: 300px;
     font-size:16px;        
 `;
@@ -21,16 +20,7 @@ const InputSearch = styled.input`
     outline: none;
     border-radius: 15px;
     border: 3px solid #626774;
-    box-sizing:border-box;
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover,
-    &:-webkit-autofill:focus,
-    &:-webkit-autofill:active {
-	 transition: background-color 5000s ease-in-out 0s;
-	 -webkit-transition: none;
-     -webkit-box-shadow: none;
-     -webkit-text-fill-color: none;
-   }
+    box-sizing:border-box;    
 `;
 
 const Button = styled.button`
@@ -75,13 +65,14 @@ const Form = () => {
     };
 
     return (
-        <FormBox onSubmit={onSubmit}>
+        <FormBox onSubmit={onSubmit} >
             <InputSearch 
             name="id" 
             type="text" 
             value={value} 
             onChange={onChange}
             maxLength="20" 
+            autocomplete="off"
             placeholder="닉네임을 적어주세요"/>
             <Button type="submit"><FaSearch/></Button>
         </FormBox>

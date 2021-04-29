@@ -12,10 +12,10 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const BOX = styled.div`
+    padding: 40px 0 0;
     width:100%;
     height:100vh;
-    background: url(https://cdn-lostark.game.onstove.com/2018/obt/assets/images/pc/bg/bg_profile.jpg?22ef124a9466e7e93f5be822f305a162)  no-repeat 50% 0;
-    box-sizing:border-box;
+    background: url(https://cdn-lostark.game.onstove.com/2018/obt/assets/images/pc/bg/bg_profile.jpg?22ef124a9466e7e93f5be822f305a162)  no-repeat 50% 0;    
 `;
 
 const Container = ({ children }) => {

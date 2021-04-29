@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { UserContext } from 'contexts/UserContext';
-import styled from 'styled-components';
+import 'components/Item.css';
 
-const GRADE_BACKGROUND_STYLE = [
+const GRADE_BACKGROUND_STYLE = [    
     "linear-gradient(135deg,#18220b,#304911)",
     "linear-gradient(135deg,#111f2c,#113d5d)",
     "linear-gradient(135deg,#261331,#480d5d)",
@@ -10,16 +10,39 @@ const GRADE_BACKGROUND_STYLE = [
     "linear-gradient(135deg,#341a09,#a24006)",
 ];
 
+const Slot = ({ itemSrc, grade}) => {    
+    return (
+        <div className="items-slot">
+            <img src={itemSrc} style={{background: GRADE_BACKGROUND_STYLE[grade - 1]}} alt />
+        </div>
+    );
+};
+
 const Items = () => {
     const { 
-        userInfo : { item }       
-    } = useContext(UserContext);
+    userInfo: {
+        profile : { role },
+        ingame: { equip }
+    }} = useContext(UserContext);
 
     return (
         <div className="items">
-            {item.map((data, i) => {
-                return <img key={i} src={data[1]} style={{background : GRADE_BACKGROUND_STYLE[data[0] - 1]}}/>
-            })}            
+            <img src={role.imgSrc} alt={role.name} />
+            <div className="items-equip">
+                <ul className="equip-left">
+                    {equip.map((item, i) => {
+                        if(i > 5) return;                        
+                        return <li><Slot itemSrc={item[1]} grade={item[0]}/></li>
+                    })}
+                </ul>
+                <ul className="equip-right">
+                    {equip.map((item, i) => {
+                        if(i < 6) return;
+                        console.log(item[0])
+                        return <li><Slot itemSrc={item[1]} grade={item[0]}/></li>
+                    })}
+                </ul>
+            </div>
         </div>
     );
 };

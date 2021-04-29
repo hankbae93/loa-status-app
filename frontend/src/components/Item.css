@@ -1,0 +1,46 @@
+.items {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 611px;
+  height: 750px;
+  background: #16191d
+    url(https://cdn-lostark.game.onstove.com/2018/obt/assets/images/pc/bg/bg_profile_equipment.png?532ac3d83cbb2a28de08e2567cb4859b)
+    no-repeat center;
+  border-radius: 15px;
+}
+
+.items-equip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 128px 40px 0;
+  box-sizing: border-box;
+}
+
+.items-equip ul {
+  padding: 0;
+  list-style: none;
+}
+
+.items-slot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 14px;
+  width: 50px;
+  height: 50px;
+  background: url(https://cdn-lostark.game.onstove.com/2018/obt/assets/images/common/game/bg_equipment_slot1.png?847938d1e0f475ca73717df97334937d)
+    no-repeat center;
+}
+
+.items-slot img {
+  width: 44px;
+  height: 44px;
+}

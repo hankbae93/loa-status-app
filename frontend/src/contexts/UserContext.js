@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 
-export const UserContext = React.createContext();
+export const UserContext = createContext({});
 export const UserProvider = ({ children }) => {
     const [userInfo, setUserInfo] = useState();
     const [loading, setLoading] = useState(false);
