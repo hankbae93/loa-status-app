@@ -18,10 +18,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-    res.send('Hello Ranja');
-});
-
 const getHTML = async (id) => {
     try {
         return await axios.get(lostarkUrl + id);
