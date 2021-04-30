@@ -15,6 +15,8 @@ https://loa-status-app.herokuapp.com/
         - 레벨, 원정대 레벨, 닉네임, 서버
         - 장착 아이템, 스텟, 각인
 
+<img src="https://imgur.com/IkTegYG.png" />
+
 ## 서버 Response JSON 구조
 
         {
