@@ -53,15 +53,17 @@ const Form = () => {
     
         await axios
         .post('http://localhost:8000/search', body)
-        .then((res) => {
-            console.log(res);
-            setUserInfo(res.data);            
-        })
-        .catch(err => {
-            console.log(err)
-        });
-        setValue('');
-        setLoading(true);
+        .then((res) => {          
+            if(res.data.profile.name === '') {
+                alert('없는 아이디입니다.');
+                setValue('');     
+                return;           
+            } else {
+                setUserInfo(res.data); 
+                setValue('');
+                setLoading(true);    
+            }                            
+        });             
     };
 
     return (

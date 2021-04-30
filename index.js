@@ -46,7 +46,7 @@ app.post('/search', (req, res) => {
                 symbolSrc: profileRole.attr('src'),
                 imgSrc: $('div.profile-equipment__character img').attr('src')
             };            
-            profile.name = profileContainer.children('.profile-character-info__name').text();        
+            profile.name = profileContainer.children('.profile-character-info__name').text();     
             profile.server = profileContainer.children('.profile-character-info__server').text();
             profile.level = {
                 lv: profileContainer.children('.profile-character-info__lv').text(),
