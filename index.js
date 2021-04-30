@@ -4,7 +4,7 @@ const cheerio = require("cheerio");
 const logger = require('morgan');
 const axios = require('axios');
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8000;
 
 // ** MIDDLEWARE ** //
 // const whitelist = ['http://localhost:3000', 'http://localhost:8080', 'https://shrouded-journey-38552.herokuapp.com']
