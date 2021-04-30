@@ -6,21 +6,6 @@ const axios = require('axios');
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-// ** MIDDLEWARE ** //
-// const whitelist = ['http://localhost:3000', 'http://localhost:8080', 'https://shrouded-journey-38552.herokuapp.com']
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     console.log("** Origin of request " + origin)
-//     if (whitelist.indexOf(origin) !== -1 || !origin) {
-//       console.log("Origin acceptable")
-//       callback(null, true)
-//     } else {
-//       console.log("Origin rejected")
-//       callback(new Error('Not allowed by CORS'))
-//     }
-//   }
-// }
-
 const lostarkUrl = 'https://lostark.game.onstove.com/Profile/Character/';
 app.use(
     cors({
@@ -116,15 +101,11 @@ app.post('/search', (req, res) => {
         .then((data) => res.send(data));    
 });
 
-// if (process.env.NODE_ENV === 'production') {
-//     // Serve any static files
-//     app.use(express.static(path.join(__dirname, 'client/build')));
-//   // Handle React routing, return all requests to React app
-//     app.get('*', function(req, res) {
-//       res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-//     });
-//   }
-
+// 리액트 정적 파일 제공
+app.use(express.static(path.join(__dirname, 'client/build')));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 app.listen(PORT, () => console.log(`listening on the port ${PORT}`));
             
             
