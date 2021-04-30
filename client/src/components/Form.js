@@ -52,7 +52,7 @@ const Form = () => {
         };    
     
         await axios
-        .post('http://localhost:8000/search', body)
+        .post('/search', body)
         .then((res) => {          
             if(res.data.profile.name === '') {
                 alert('없는 아이디입니다.');
